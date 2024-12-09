@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    env: test
+    app: main
+    tiers: frontend
+    owner: VStupa
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: myapp # Service(Proxy) will look for those Pods labels
+    spec:
+      containers:
+        - name: nginx
+          image: valentinstupa/custom-nginx:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              name: nginx-port
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  selector:
+    app: myapp # Select pods with those labels
+  ports:
+    - name: nginx-http
+      protocol: TCP
+      #port: 9001 # Port on proxy
+      port: 80
+      #targetPort: nginx-port # Port on pods
+      nodePort: 30000
+  type: NodePort
+  #type: ClusterIP
+  #type: LoadBalancer
+
