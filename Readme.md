@@ -106,6 +106,6 @@ monitoring    prometheus-server-5c9bdbf9d6-jqm5p         1/1     Running   0    
         
     [Получить логин/пароль от вэба графаны:](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/)
 
-    [!NOTE]
-    Get your 'admin' user password by running:
-    kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+[!NOTE]
+Get your 'admin' user password by running:
+kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
