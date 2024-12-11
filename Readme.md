@@ -1,4 +1,4 @@
-## Deploy k8s cluster for diplom project -- in progress....
+## Deploy k8s cluster for diplom project
 
 [Установка k8s кластера при помощи kubespray](https://github.com/kubernetes-incubator/kubespray.git) / [или](https://sysadmintalks.ru/deploy-kubernetes-cluster-kubespray/)  
 
